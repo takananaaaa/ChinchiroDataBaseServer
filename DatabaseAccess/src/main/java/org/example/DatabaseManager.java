@@ -26,9 +26,14 @@ public class DatabaseManager {
 
     // ユーザー管理用テーブルを作成するメソッド
     public void setupTable() {
+
+        //Mainを実行したときにテーブルが存在しなかったときに作成,存在する場合は無視する
+        //テーブルの要素は,id, username, password
+        //NOT NULL 必ず値が入る
+        //UNIQUE　同じ値は登録できない
         String sql = "CREATE TABLE IF NOT EXISTS users ("
                 + "id INT AUTO_INCREMENT PRIMARY KEY, "
-                + "name VARCHAR(50) NOT NULL UNIQUE, "
+                + "username VARCHAR(50) NOT NULL UNIQUE, "
                 + "password VARCHAR(50) NOT NULL"
                 + ")";
         try (Connection conn = getConnection();
